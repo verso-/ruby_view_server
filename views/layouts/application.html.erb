@@ -23,5 +23,27 @@
       <p>If you're done here this will take you back to</p>
 	  <a href='http://google.com'>google</a>
     </div>
+	<hr/>
+	<div>
+		
+		<form method='post' action="<%= @request.path %>">
+			First name: <input type="text"
+			name="first_name" placeholder='first name'/><br />
+			Gender: </br>
+			<input type="radio" name="sex" value="male">Male</br>
+			<input type="radio" name="sex" value="female">Female</br>
+			<input type="submit" value="Submit" />
+		</form>
+		<%if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+		Hello there <%= @request.query['first_name'] %>.
+		<%else%>
+		Enter your name
+		<%end%>
+		<%if @request.query['sex'] && !@request.query['sex'].empty? %>
+		You are a <%= @request.query['sex']%>.
+		<%end%>
+		
+		
+	</div>
   </body>
 </html>
